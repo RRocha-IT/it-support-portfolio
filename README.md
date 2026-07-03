@@ -1,7 +1,7 @@
 # IT Support Portfolio
 
 ## About me
-I'm Rúben Rocha, currently training in IT Technical Support, with a focus on Windows,networking, Microsoft 365, and end-user support. This repository documents real-world support cases I investigated and resolved, following the case format used in professional helpdesk environments.
+I'm Rúben Albertino Ferreira Rocha, currently training in IT Technical Support, with a focus on Windows,networking, Microsoft 365, and end-user support. This repository documents real-world support cases I investigated and resolved, following the case format used in professional helpdesk environments.
 
 ## Goal
 Build a practical, structured portfolio that demonstrates:
