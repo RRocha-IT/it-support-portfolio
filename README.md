@@ -31,5 +31,5 @@ Build a practical, structured portfolio that demonstrates:
 - Helpdesk / ticketing tools (ITSM)
 
 ## Contact
-- LinkedIn: [linkedin.com/in/rubenafrocha]
+- LinkedIn: [https://www.linkedin.com/in/rubenafrocha]
 - Email: [rubenrochaa18@gmail.com]
