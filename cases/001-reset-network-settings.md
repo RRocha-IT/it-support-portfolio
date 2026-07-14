@@ -37,10 +37,11 @@ Restart the computer after running the commands.
 - It should be one of the final troubleshooting steps, after confirming cables, hardware, and drivers are working correctly
 
 ## 🖼️ Evidence
-![ipconfig before reset](../screenshots/001-reset-network-settings/01-ipconfig-before.png)
-![ping failure to gateway](../screenshots/001-reset-network-settings/02-ping-fail.png)
-![reset commands executed](../screenshots/001-reset-network-settings/03-netsh-reset.png)
-![successful ping after reset](../screenshots/001-reset-network-settings/04-ping-success.png)
+![ipconfig before reset](../screenshots/001-reset-network-settings/01-ipconfig-before.png) | (../screenshots/001-reset-network-settings/02-ipconfig-before.png)
+![ping success](../screenshots/001-reset-network-settings/03-ping_success.png)
+![ping failure to gateway]()
+![reset commands executed](../screenshots/001-reset-network-settings/04-netsh-reset.png)
+![successful ping after reset]()
 
 ---
 
