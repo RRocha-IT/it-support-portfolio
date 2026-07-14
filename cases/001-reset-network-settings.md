@@ -32,6 +32,14 @@ Restart the computer after running the commands.
 - `ping google.com` — successful
 - Browser opens websites normally
 
+### ⚠️ Observation during execution
+During the execution of `netsh int ip reset`, one specific entry failed with
+"Access is denied", even when running the terminal in elevated (Administrator) mode.
+This is a known Windows behavior, related to restricted permissions on a specific
+registry key (`HKLM\SYSTEM\CurrentControlSet\Control\Nsi`) that cannot be modified
+solely with standard administrator privileges. The reset of the remaining components
+completed successfully and did not prevent the resolution of the connectivity issue.
+
 ## 📝 Lessons Learned
 - Resetting Winsock and the IP stack can resolve many connectivity issues
 - It should be one of the final troubleshooting steps, after confirming cables, hardware, and drivers are working correctly
