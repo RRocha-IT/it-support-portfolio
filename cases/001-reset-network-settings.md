@@ -1,22 +1,22 @@
-# Case #001 — Resolução de Problemas de Conectividade via Reset de Definições de Rede (Windows 10/11)
+# Case #001 — Troubleshooting Connectivity Issues by Resetting Network Settings (Windows 10/11)
 
-## 📌 Contexto
-Um utilizador reporta que o computador mostra o Wi-Fi ligado, mas não consegue aceder a
-sites nem à rede local. O problema surgiu após uma atualização do Windows.
+## 📌 Context
+A user reports that the computer shows the Wi-Fi connection as active, but they cannot access websites or the local network. The issue started after a Windows update.
 
-## 🔍 Sintomas observados
-- Ícone de Wi-Fi mostra "ligado", mas sem acesso à internet
-- Não é possível fazer ping a `8.8.8.8` nem a `google.com`
-- Outros dispositivos na mesma rede funcionam normalmente
+## 🔍 Observed Symptoms
+- Wi-Fi icon shows "connected", but there is no internet access
+- Unable to ping `8.8.8.8` or `google.com`
+- Other devices on the same network work normally
 
-## 🧠 Diagnóstico
-1. Verificar se o problema é local ou de rede — testar noutro dispositivo
-2. `ipconfig /all` — verificar se o adaptador tem IP válido e gateway correto
-3. `ping 127.0.0.1` — testar a stack TCP/IP local
-4. `ping <gateway>` — testar ligação ao router
-5. Conclusão: configuração de rede local corrompida — necessário reset
+## 🧠 Diagnosis
+1. Verify whether the issue is local or network-related — test using another device
+2. `ipconfig /all` — check if the network adapter has a valid IP address and correct gateway
+3. `ping 127.0.0.1` — test the local TCP/IP stack
+4. `ping <gateway>` — test the connection to the router
+5. Conclusion: local network configuration was corrupted — a reset was required
 
-## 🛠️ Solução aplicada
+## 🛠️ Applied Solution
+
 ```powershell
 ipconfig /release
 ipconfig /flushdns
@@ -24,22 +24,24 @@ netsh winsock reset
 netsh int ip reset
 ipconfig /renew
 ```
-Reiniciar o computador após executar os comandos.
 
-## ✅ Verificação
-- `ping 8.8.8.8` — sucesso
-- `ping google.com` — sucesso
-- Browser abre páginas normalmente
+Restart the computer after running the commands.
 
-## 📝 Lições aprendidas
-- O reset de Winsock e da stack IP resolve grande parte dos problemas de conectividade
-- Deve ser um dos últimos passos do diagnóstico, depois de confirmar cabos e drivers
+## ✅ Verification
+- `ping 8.8.8.8` — successful
+- `ping google.com` — successful
+- Browser opens websites normally
 
-## 🖼️ Evidências
-![ipconfig antes do reset](../screenshots/001-reset-network-settings/01-ipconfig-before.png)
-![ping falha ao gateway](../screenshots/001-reset-network-settings/02-ping-fail.png)
-![comandos de reset executados](../screenshots/001-reset-network-settings/03-netsh-reset.png)
-![ping com sucesso após reset](../screenshots/001-reset-network-settings/04-ping-success.png)
+## 📝 Lessons Learned
+- Resetting Winsock and the IP stack can resolve many connectivity issues
+- It should be one of the final troubleshooting steps, after confirming cables, hardware, and drivers are working correctly
+
+## 🖼️ Evidence
+![ipconfig before reset](../screenshots/001-reset-network-settings/01-ipconfig-before.png)
+![ping failure to gateway](../screenshots/001-reset-network-settings/02-ping-fail.png)
+![reset commands executed](../screenshots/001-reset-network-settings/03-netsh-reset.png)
+![successful ping after reset](../screenshots/001-reset-network-settings/04-ping-success.png)
 
 ---
+
 **Tags:** `windows` `networking` `tcp-ip` `troubleshooting`
