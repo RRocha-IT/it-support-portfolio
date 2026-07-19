@@ -21,7 +21,8 @@ Build a practical, structured portfolio that demonstrates:
 | `screenshots/` | Visual evidence of resolved cases |
 
 ## Documented cases
-- [In progress — the first case will be linked here, e.g. Resetting Windows Network Settings](cases/reset-network-settings-windows.md)
+* [Case #001 — Troubleshooting Print Spooler Stuck](./cases/001-print-spooler-stuck.md)
+* [Case #002 — Troubleshooting Connectivity Issues / Reset Network Settings](./cases/002-reset-network-settings.md)
 
 ## Technical skills
 - Windows 10/11 (installation, troubleshooting, user management)
