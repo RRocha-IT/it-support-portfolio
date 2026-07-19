@@ -1,4 +1,4 @@
-# Case #001 — Printer Offline / Print Queue Stuck
+# Case #001 — Printer Offline / Print Queue Stuck (Windows 10/11)
  
 - **Category:** Hardware
 - **Simulated priority:** Low
