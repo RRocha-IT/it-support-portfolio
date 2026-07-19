@@ -59,12 +59,25 @@ completed successfully and did not prevent the resolution of the connectivity is
 
 ## 🖼️ Evidence
 **Before - DHCP Lease Missing/General Failure; Ping fails:**
+
 ![ping failure](../screenshots/001-reset-network-settings/01-ping-fail.png)
+
+---
+
 **Ipconfig showing missing configuration:**
+
 ![ipconfig before reset](../screenshots/001-reset-network-settings/02-ipconfig-before.png)
+
+---
+
 **Applying the reset commands:**
+
 ![reset commands](../screenshots/001-reset-network-settings/03-netsh-reset.png)
+
+---
+
 **After - Successful ping, issue resolved:**
+
 ![successful ping after reset](../screenshots/001-reset-network-settings/04-ping-success.png)
 
 ---
