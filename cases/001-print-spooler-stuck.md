@@ -16,7 +16,7 @@ A user reports that a document sent to print remains stuck in the print queue an
 
 ## 🧠 Diagnosis
 1. Open the print queue (`Devices and Printers` → double-click the printer) — confirm the job is genuinely stuck, not just slow
-2. Attempt to cancel the job via the GUI (`Printer` menu → `Cancel All Documents`)
+2. Attempt to cancel the job via the GUI (`Printer` menu → `Cancel All Documents`) — the job disappeared from the queue almost immediately; however, since GUI cancellation doesn't always fully clear underlying spool files, a service-level check was still performed as a precaution
 3. `Get-Service -Name spooler` — confirm the Print Spooler service is running, but the queue remains jammed regardless
 4. Conclusion: leftover/corrupted spool files are stuck on disk, and the spooler service is holding a lock on them — a service restart combined with a manual cleanup of the spool folder is required
 
@@ -46,25 +46,25 @@ Start-Service -Name spooler
 ## 🖼️ Evidence
 **Before — stuck print job in queue:**
 
-![example1](../screenshots/001-print-spooler-stuck/01-stuck-print-job.png)
+![Stuck print job shown in the print queue](../screenshots/001-print-spooler-stuck/01-stuck-print-job.png)
  
  ---
 
 **Spooler service status check:**
 
-![example2](../screenshots/001-print-spooler-stuck/02-spooler-service-status.png)
+![Print Spooler service status shown as Running](../screenshots/001-print-spooler-stuck/02-spooler-service-status.png)
 
 ---
  
 **Applying the fix (stop, clear, restart):**
 
-![example3](../screenshots/001-print-spooler-stuck/03-clear-spool-commands.png)
+![Commands to stop the spooler, clear the queue, and restart the service](../screenshots/001-print-spooler-stuck/03-clear-spool-commands.png)
 
 ---
  
  **After — successful test print:**
 
-![example4](../screenshots/001-print-spooler-stuck/04-print-success.png)
+![Successful test print after resolving the stuck queue](../screenshots/001-print-spooler-stuck/04-print-success.png)
 
 ---
  
