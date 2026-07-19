@@ -45,15 +45,25 @@ Start-Service -Name spooler
 
 ## 🖼️ Evidence
 **Before — stuck print job in queue:**
+
 ![example1](../screenshots/001-print-spooler-stuck/01-stuck-print-job.png)
  
+ ---
+
 **Spooler service status check:**
+
 ![example2](../screenshots/001-print-spooler-stuck/02-spooler-service-status.png)
+
+---
  
 **Applying the fix (stop, clear, restart):**
+
 ![example3](../screenshots/001-print-spooler-stuck/03-clear-spool-commands.png)
+
+---
  
  **After — successful test print:**
+
 ![example4](../screenshots/001-print-spooler-stuck/04-print-success.png)
 
 ---
