@@ -18,6 +18,7 @@
 1. Investigation step *(what you checked first, and why)*
 2. Tool/command used *(what it revealed)*
 3. Root cause identified *(the conclusion, tying the evidence together)*
+
 ## 🛠️ Applied Solution
  
 ```powershell

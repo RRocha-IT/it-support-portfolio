@@ -2,7 +2,7 @@
 
 - **Category:** Network
 - **Simulated priority:** Medium
-- **Resolution time:** 15 min
+- **Resolution time:** ~10 min
 
 **Note:** This scenario was reproduced in a controlled VMware Workstation environment for demonstration and practice purposes.
 
