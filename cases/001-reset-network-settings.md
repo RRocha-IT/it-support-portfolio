@@ -1,9 +1,9 @@
 # Case #001 — Troubleshooting Connectivity Issues by Resetting Network Settings (Windows 10/11)
 
-**Note:** This scenario was reproduced in a controlled VirtualBox VM environment for demonstration and practice purposes.
+**Note:** This scenario was reproduced in a controlled VMware Workstation environment for demonstration and practice purposes.
 
 ## 📌 Context
-A user reports that the computer shows an active network connection, but cannot access websites or the local network. Investigation revealed an incorrect manual IP configuration (wrong default gateway), which was preventing outbound traffic.
+A user reports that his computer shows an active network connection icon, but they cannot access any websites or services. Investigation through the command line revealed a corrupted TCP/IP stack state and an expired/missing DHCP lease configuration, triggering a localized `General failure` that completely blocks outbound packet transmission.
 
 ## 🔍 Observed Symptoms
 - Wi-Fi icon shows "connected", but there is no internet access
@@ -55,16 +55,22 @@ completed successfully and did not prevent the resolution of the connectivity is
 - It should be one of the final troubleshooting steps, after confirming cables, hardware, and drivers are working correctly
 
 ## 🖼️ Evidence
-**Normal situation; ping successfull:**
-![ping success](../screenshots/001-reset-network-settings/01-ping-success.png)
-**Ipconfig showing correct configuration:**
-![ipconfig before reset](../screenshots/001-reset-network-settings/02-ipconfig-before.png) | ![ipconfig before reset 2](../screenshots/001-reset-network-settings/03-ipconfig-before.png)
-**Before - Misconfigured gateway; ping fails:**
-![ping failure to gateway]()
+**Before - DHCP Lease Missing/General Failure; Ping fails:**
+![ping failure](../screenshots/001-reset-network-settings/01-ping-fail.png)
+**Ipconfig showing missing configuration:**
+![ipconfig before reset](../screenshots/001-reset-network-settings/02-ipconfig-before.png)
 **Applying the reset commands:**
-![reset commands executed](../screenshots/001-reset-network-settings/04-netsh-reset.png)
+![reset commands](../screenshots/001-reset-network-settings/03-netsh-reset.png)
 **After - Successfull ping, issue resolved:**
-![successful ping after reset]()
+![successful ping after reset](../screenshots/001-reset-network-settings/04-ping-success.png)
+
+---
+
+### 🔄 Post-Remediation Note & Best Practice
+
+Although network connectivity was restored immediately after executing `ipconfig /renew` (as proven by the successful pings), **a system restart is highly recommended and standard corporate IT best practice**. 
+
+The `netsh` catalog and interface resets require a full OS reboot to cleanly reinitialize the core networking components and registry entries in memory, ensuring long-term stability and preventing the issue from recurring.
 
 ---
 
