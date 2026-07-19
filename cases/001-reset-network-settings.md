@@ -3,19 +3,18 @@
 **Note:** This scenario was reproduced in a controlled VMware Workstation environment for demonstration and practice purposes.
 
 ## 📌 Context
-A user reports that his computer shows an active network connection icon, but they cannot access any websites or services. Investigation through the command line revealed a corrupted TCP/IP stack state and an expired/missing DHCP lease configuration, triggering a localized `General failure` that completely blocks outbound packet transmission.
+A user reports that their computer shows an active network connection icon, but they cannot access any websites or services. Investigation through the command line revealed a corrupted TCP/IP stack state and an expired/missing DHCP lease configuration, triggering a localized `General failure` that completely blocks outbound packet transmission.
 
 ## 🔍 Observed Symptoms
-- Wi-Fi icon shows "connected", but there is no internet access
+- Network icon shows "Connected" (Ethernet), but there is no internet access
 - Unable to ping `8.8.8.8` or `google.com`
 - Other devices on the same network work normally
 
 ## 🧠 Diagnosis
-1. Verify whether the issue is local or network-related — test using another device
-2. `ipconfig /all` — check if the network adapter has a valid IP address and correct gateway
-3. `ping 127.0.0.1` — test the local TCP/IP stack
-4. `ping <gateway>` — test the connection to the router
-5. Conclusion: local network configuration was corrupted — a reset was required
+1. Verify whether the issue is local or network-related – test using another device.
+2. `ipconfig /all` – check if the network adapter has a valid IP address and correct gateway *(identified a missing configuration / dropped DHCP lease)*.
+3. `ping 8.8.8.8` – test external connectivity *(resulted in `General failure`, confirming the system could not broadcast outbound packets)*.
+4. Conclusion: The local DHCP configuration state was missing/corrupted – a network stack reset and IP address renew were required.
 
 ## 🛠️ Applied Solution
 
@@ -37,11 +36,6 @@ Restart the computer after running the commands.
 * **`netsh int ip reset`**: Reinstalls/resets the TCP/IP protocol stack within the Windows Registry to clear corrupted configurations.
 * **`ipconfig /renew`**: Requests a brand-new IP address from the DHCP server (router), restoring internet access.
 
-## ✅ Verification
-- `ping 8.8.8.8` — successful
-- `ping google.com` — successful
-- Browser opens websites normally
-
 ### ⚠️ Observation during execution
 During the execution of `netsh int ip reset`, one specific entry failed with
 "Access is denied", even when running the terminal in elevated (Administrator) mode.
@@ -49,6 +43,11 @@ This is a known Windows behavior, related to restricted permissions on a specifi
 registry key (`HKLM\SYSTEM\CurrentControlSet\Control\Nsi`) that cannot be modified
 solely with standard administrator privileges. The reset of the remaining components
 completed successfully and did not prevent the resolution of the connectivity issue.
+
+## ✅ Verification
+- `ping 8.8.8.8` — successful
+- `ping google.com` — successful
+- Browser opens websites normally
 
 ## 📝 Lessons Learned
 - Resetting Winsock and the IP stack can resolve many connectivity issues
@@ -61,16 +60,8 @@ completed successfully and did not prevent the resolution of the connectivity is
 ![ipconfig before reset](../screenshots/001-reset-network-settings/02-ipconfig-before.png)
 **Applying the reset commands:**
 ![reset commands](../screenshots/001-reset-network-settings/03-netsh-reset.png)
-**After - Successfull ping, issue resolved:**
+**After - Successful ping, issue resolved:**
 ![successful ping after reset](../screenshots/001-reset-network-settings/04-ping-success.png)
-
----
-
-### 🔄 Post-Remediation Note & Best Practice
-
-Although network connectivity was restored immediately after executing `ipconfig /renew` (as proven by the successful pings), **a system restart is highly recommended and standard corporate IT best practice**. 
-
-The `netsh` catalog and interface resets require a full OS reboot to cleanly reinitialize the core networking components and registry entries in memory, ensuring long-term stability and preventing the issue from recurring.
 
 ---
 
