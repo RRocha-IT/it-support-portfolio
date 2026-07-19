@@ -1,8 +1,8 @@
 # Case #001 — Troubleshooting Connectivity Issues by Resetting Network Settings (Windows 10/11)
 
-**Category:** Network
-**Simulated priority:** Medium
-**Resolution time:** 15 min
+- **Category:** Network
+- **Simulated priority:** Medium
+- **Resolution time:** 15 min
 
 **Note:** This scenario was reproduced in a controlled VMware Workstation environment for demonstration and practice purposes.
 
