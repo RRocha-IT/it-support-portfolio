@@ -1,8 +1,8 @@
 # Case #00X — [Problem Title]
  
-**Category:** Windows / Network / M365 / Hardware / Accounts
-**Simulated priority:** Low / Medium / High
-**Resolution time:** X min
+- **Category:** Windows / Network / M365 / Hardware / Accounts
+- **Simulated priority:** Low / Medium / High
+- **Resolution time:** X min
  
 **Note:** *(Optional — only if simulated in a VM/lab environment)* This scenario was reproduced in a controlled [VirtualBox/VMware] environment for demonstration and practice purposes.
  
