@@ -44,13 +44,13 @@ command 2
 
 ## 🖼️ Evidence
 **Before — [short description]:**
-![description](../screenshots/00X-case-name/01-description.png)
+![example1]
  
 **During — [short description]:**
-![description](../screenshots/00X-case-name/02-description.png)
+![example2]
  
 **After — [short description]:**
-![description](../screenshots/00X-case-name/03-description.png)
+![example3]
  
 ---
  
